@@ -3,10 +3,12 @@ import re, socket
 from urllib.parse import urlparse
 from urllib.parse import urljoin
 import urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse
-start_url = "http://www.iitb.ac.in/"
+start_url = "http://www.iitr.ac.in/hi/departments/DPT/pages/Research+Publications.html"
 unvisited = []
 unvisited.append(start_url)
-local = socket.gethostbyname(urlparse(start_url).netloc)
+local = (urlparse(start_url).netloc)
+# local = local.split(".")
+# local = local[0]+"."+local[1]+"."+local[2]
 visited = []
 pdfs = []
 def crawl():
@@ -15,18 +17,25 @@ def crawl():
     global local
     website = unvisited.pop()
     visited.append(website)
-    #-++779printlkpcc(website)
+    #print(website)
     req = urllib.request.Request(website)
-    response = urllib.request.urlopen(req)
-    print((response.getheader('Content-Type')))
+    try:
+        response = urllib.request.urlopen(req)
+    except:
+        print("Not Found")
+        return
+    #print((response.getheader('Content-Type')))
     if  'text/html' in response.getheader('Content-Type'):
         page = response.read()
     else:
         return
     soup = BeautifulSoup(page, 'html.parser')
     #print((soup.prettify()))
+    print(website)
     for link in soup.find_all('a'):        
         if "http" not in link:
+            if "#" in link:
+                return
             abs_link = urljoin(website, link.get("href"))
         else:
             abs_link = link.get('href')
@@ -37,17 +46,21 @@ def crawl():
                 pdfs.append(abs_link)
             else:
                 try:
-                    if (abs_link not in unvisited) and (socket.gethostbyname(urlparse(abs_link).netloc) == local):
+                    ip = (urlparse(abs_link).netloc)
+                    # ip = ip.split(".")
+                    # ip = ip[0]+"."+ip[1]+"."+ip[2]
+                    if (abs_link not in unvisited) and (ip == local):
                         unvisited.append(abs_link)
                 except:
-                    print("Faltu IP")
-
-while (len(unvisited) > 0):
-    unvisited.sort()
-    for link in unvisited:
-        print(link)
-    print((len(unvisited)))
-    x = eval(input())
+                    pass
+i=0
+while (len(unvisited)>0):
+    # unvisited.sort()
+    # for link in unvisited:
+    #     print(link)
+    # print((len(unvisited)))
     crawl()
+    i=i+1
+    print(len(pdfs), len(unvisited))
 print("#############")
 print(pdfs)

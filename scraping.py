@@ -30,15 +30,17 @@ def crawl():
             abs_link = urljoin(website, link.get("href"))
         else:
             abs_link = link.get('href')
-        print(abs_link)
+        #print(abs_link)
         if abs_link not in visited:
             if re.search( '^.+\.pdf$', abs_link ):
                 visited.append(abs_link)
                 pdfs.append(abs_link)
             else:
-                if (abs_link not in unvisited) and (socket.gethostbyname(urlparse(abs_link).netloc) == local):
-                    unvisited.append(abs_link)
-
+                try:
+                    if (abs_link not in unvisited) and (socket.gethostbyname(urlparse(abs_link).netloc) == local):
+                        unvisited.append(abs_link)
+                except:
+                    print("Faltu IP")
 
 while (len(unvisited) > 0):
     unvisited.sort()

@@ -7,8 +7,8 @@ start_url = "http://www.iitr.ac.in/hi/departments/DPT/pages/Research+Publication
 unvisited = []
 unvisited.append(start_url)
 local = (urlparse(start_url).netloc)
-# local = local.split(".")
-# local = local[0]+"."+local[1]+"."+local[2]
+local = local.split(".")
+local = local[0]+"."+local[1]+"."+local[2]
 visited = []
 pdfs = []
 def crawl():
@@ -47,8 +47,8 @@ def crawl():
             else:
                 try:
                     ip = (urlparse(abs_link).netloc)
-                    # ip = ip.split(".")
-                    # ip = ip[0]+"."+ip[1]+"."+ip[2]
+                    ip = ip.split(".")
+                    ip = ip[0]+"."+ip[1]+"."+ip[2]
                     if (abs_link not in unvisited) and (ip == local):
                         unvisited.append(abs_link)
                 except:

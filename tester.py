@@ -7,6 +7,7 @@ def get_pdf_links():
     directory = "pickled_links"
 
     for line in data.readlines():
+        print(line)
         line = urlparse(line).netloc.split(".")[1]+".p"
         pdf_list = ["pdf1", "pdf2"]
         if not os.path.exists(directory):

@@ -13,6 +13,7 @@ visited = defaultdict(lambda: 0)
 pdfs = []
 local_ip = ""
 def get_ip(url):
+    print(url)
     url = (socket.gethostbyname(urlparse(url).netloc)).split('.')
     return url[0] + "." + url[1] + "." + url[2]
 
@@ -82,7 +83,7 @@ def get_pdf_links():
         grand_list.append(pdfs_list)
         time2 = time()
         diff = int(time2 - time1)
-        print("%s website completed, %d time taken: %d, PDFs found: %d"%(line, diff, len(pdf_list)))
+        print(("%s website completed, %d time taken: %d, PDFs found: %d"%(line, diff, len(pdf_list))))
         line = urlparse(line).netloc.split(".")[1]+".p"
         if not os.path.exists(directory):
             os.makedirs(directory)

@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 from urllib.parse import urljoin
 from collections import defaultdict
 from time import time
+import pickle, os
 import urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse
 
 unvisited = []
@@ -18,10 +19,11 @@ def get_ip(url):
 def crawl():
     global local_ip, unvisited, visited, pdfs, unvisited_map
     website = unvisited.pop()
+    print(website)
     visited[website] = 1
     req = urllib.request.Request(website)
     try:
-        reponse = urllib.request.urlopen(req,timeout=5)
+        reponse = urllib.request.urlopen(req)
     except:
         print('Error 404 :Not Found')
         return
@@ -38,9 +40,9 @@ def crawl():
         if "http" == path[:4]:
             if "#" in path:
                 return
-            abs_link = urljoin(website, path)
+            abs_link = path
         else:
-            abs_link = link.get('href')
+            abs_link = urljoin(website, path)
         if ( visited[abs_link] == 0 ):
             if abs_link[-4:] == ".pdf":
                 visited[abs_link] = 1
@@ -67,7 +69,32 @@ def get_links(start_url):
         print(("%d PDFs found, %d links scanned, %d links still left" % (len(pdfs), scanned, len(unvisited))))
     return pdfs
 
-if __name__ == '__main__':
-    dataFile = open(fileName,'r')
-    for line in dataFile.readlines():
+# url = "http://www.airccse.org"
+# print(get_links(url))
+def get_pdf_links():
+    grand_list = []
+    filename = "final_domains.txt"
+    data = open(filename, "r")
+    directory = "pickled_links"
+    for line in data.readlines():
+        time1 = time()
         pdf_list = get_links(line)
+        grand_list.append(pdfs_list)
+        time2 = time()
+        diff = int(time2 - time1)
+        print("%s website completed, %d time taken: %d, PDFs found: %d"%(line, diff, len(pdf_list)))
+        line = urlparse(line).netloc.split(".")[1]+".p"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        dir_path = os.path.join(directory,line)
+        print(dir_path)
+        pick_file = open(dir_path, "wb")
+        pickle.dump(pdf_list, pick_file)
+        pick_file.close()
+    data.close()
+    dir_path = os.path.join(directory,"grand_list.p")
+    pickle_file = open(dir_path, "wb")
+    pickle.dump(grand_list, pickle_file)
+    pickle_file.close()
+
+get_pdf_links()

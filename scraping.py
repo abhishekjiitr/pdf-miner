@@ -3,7 +3,7 @@ import re, socket
 from urllib.parse import urlparse
 from urllib.parse import urljoin
 import urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse
-start_url = "http://www.iitr.ac.in/hi/departments/DPT/pages/Research+Publications.html"
+start_url = "http://www.asmp.eurasipjournals.com"
 unvisited = []
 unvisited.append(start_url)
 local = (urlparse(start_url).netloc)
@@ -32,7 +32,7 @@ def crawl():
     soup = BeautifulSoup(page, 'html.parser')
     #print((soup.prettify()))
     print(website)
-    for link in soup.find_all('a'):        
+    for link in soup.find_all('a'):
         if "http" not in link:
             if "#" in link:
                 return

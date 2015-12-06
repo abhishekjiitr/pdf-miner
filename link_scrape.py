@@ -6,6 +6,12 @@ from collections import defaultdict
 from time import time
 import pickle, os
 import urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse
+mine = "mine"
+if not os.path.exists(mine):
+	os.makedirs(mine)
+mine = os.path.join(mine, "pdf.txt")
+miner = open(mine, "w+")
+
 
 f=open('out.txt','w+')
 unvisited = []
@@ -13,17 +19,21 @@ unvisited_map = {}
 visited = defaultdict(lambda: 0)
 pdfs = []
 local_ip = ""
-def get_ip(url):
-	#print(url)
-	try:
-		url = (socket.gethostbyname(urlparse(url).netloc)).split('.')
-	except:
-		pass
-	return url[0] + "." + url[1] + "." + url[2]
+numPDF = 0
+numUnvisited = 0
+
+# def get_ip(url):
+# 	#print(url)
+# 	try:
+# 		url = (socket.gethostbyname(urlparse(url).netloc)).split('.')
+# 	except:
+# 		pass
+# 	return url[0] + "." + url[1] + "." + url[2]
 
 def crawl():
-	global local_ip, unvisited, visited, pdfs, unvisited_map, f
+	global local_ip, unvisited, visited, pdfs, unvisited_map, f, numPDF, numUnvisited
 	website = unvisited.pop()
+	numUnvisited -= 1
 	print(website,"\n")
 	f.write(website+"\n")
 	visited[website] = 1
@@ -56,26 +66,33 @@ def crawl():
 			if abs_link[-4:] == ".pdf":
 				visited[abs_link] = 1
 				pdfs.append(abs_link)
+				numPDF += 1
 			else:
 				try:
-					ip = get_ip(abs_link)
+					ip = (urlparse(abs_link).netloc)
 					if (ip == local_ip) and (abs_link not in unvisited_map):
 						unvisited.append(abs_link)
 						unvisited_map[abs_link] = 1
+						numUnvisited += 1
 				except:
 					pass
 
 def get_links(start_url):
-	global unvisited, pdfs, unvisited_map, local_ip
-	local_ip = get_ip(start_url)
+	global unvisited, pdfs, unvisited_map, local_ip, numPDF, numUnvisited, miner
+	numUnvisited = 0
+	local_ip = (urlparse(start_url).netloc)
 	unvisited = []
 	unvisited.append(start_url)
+	numUnvisited += 1
 	unvisited_map[start_url] = 1
 	scanned = 0
-	while ( len(unvisited) > 0 ):
+	while ( numUnvisited > 0 ):
 		crawl()
+		if ( (numPDF != 0)  and numPDF % 100 == 0 ):
+			for var in range(numPDF-100, numPDF):
+				miner.write(pdfs[var]+"\n")
 		scanned += 1
-		stri=("%d PDFs found, %d links scanned, %d links still left" % (len(pdfs), scanned, len(unvisited)))
+		stri=("%d PDFs found, %d links scanned, %d links still left" % (numPDF, scanned, numUnvisited))
 		print(stri)
 		stri=stri+"\n"
 		f.write(stri)
@@ -114,3 +131,4 @@ def get_pdf_links():
 	pickle_file.close()
 
 get_pdf_links()
+miner.close()

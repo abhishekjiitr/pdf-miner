@@ -13,9 +13,12 @@ visited = defaultdict(lambda: 0)
 pdfs = []
 local_ip = ""
 def get_ip(url):
-    print(url)
-    url = (socket.gethostbyname(urlparse(url).netloc)).split('.')
-    return url[0] + "." + url[1] + "." + url[2]
+	#print(url)
+	try:
+		url = (socket.gethostbyname(urlparse(url).netloc)).split('.')
+	except:
+		pass
+	return url[0] + "." + url[1] + "." + url[2]
 
 def crawl():
     global local_ip, unvisited, visited, pdfs, unvisited_map
@@ -24,7 +27,7 @@ def crawl():
     visited[website] = 1
     req = urllib.request.Request(website)
     try:
-        reponse = urllib.request.urlopen(req)
+        reponse = urllib.request.urlopen(req,timeout=5)
     except:
         print('Error 404 :Not Found')
         return
@@ -44,6 +47,7 @@ def crawl():
             abs_link = path
         else:
             abs_link = urljoin(website, path)
+            abs_link.replace(r'\n','')
         if ( visited[abs_link] == 0 ):
             if abs_link[-4:] == ".pdf":
                 visited[abs_link] = 1
@@ -70,8 +74,8 @@ def get_links(start_url):
         print(("%d PDFs found, %d links scanned, %d links still left" % (len(pdfs), scanned, len(unvisited))))
     return pdfs
 
-# url = "http://www.airccse.org"
-# print(get_links(url))
+#get_links("http://www.iitr.ac.in/")
+#print(get_links(url))
 def get_pdf_links():
     grand_list = []
     filename = "final_domains.txt"
@@ -80,10 +84,10 @@ def get_pdf_links():
     for line in data.readlines():
         time1 = time()
         pdf_list = get_links(line)
-        grand_list.append(pdfs_list)
+        grand_list.append(pdf_list)
         time2 = time()
         diff = int(time2 - time1)
-        print(("%s website completed, %d time taken: %d, PDFs found: %d"%(line, diff, len(pdf_list))))
+        #print(("%s website completed, %d time taken: %d, PDFs found: %d"%(line, diff, len(pdf_list))))
         line = urlparse(line).netloc.split(".")[1]+".p"
         if not os.path.exists(directory):
             os.makedirs(directory)

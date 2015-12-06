@@ -44,12 +44,13 @@ def crawl():
 		print('Error 404 :Not Found')
 		f.write('Error 404 :Not Found\n')
 		return
-	if 'text/html' in reponse.getheader('Content-Type'):
-		try:
+	try:
+		if 'text/html' in reponse.getheader('Content-Type'):
 			page = reponse.read()
-		except:
+		else:
 			return
-	else:
+	except:
+		print("Invalid Response")
 		return
 	soup = BeautifulSoup(page, 'html.parser')
 	for link in soup.find_all('a'):

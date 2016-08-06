@@ -1,0 +1,12 @@
+http://localhost/
+1 PDFs found, 1 links scanned, 4 links still left
+http://localhost/codes.html
+1 PDFs found, 2 links scanned, 4 links still left
+http://localhost/contact.html
+1 PDFs found, 3 links scanned, 3 links still left
+http://localhost/services.html
+1 PDFs found, 4 links scanned, 2 links still left
+http://localhost/about.html
+1 PDFs found, 5 links scanned, 1 links still left
+http://localhost/index.html
+1 PDFs found, 6 links scanned, 0 links still left

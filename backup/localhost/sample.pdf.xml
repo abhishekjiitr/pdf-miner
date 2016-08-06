@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="0.41.0">
+<page number="1" position="absolute" top="0" left="0" height="1261" width="891">
+	<fontspec id="0" size="14" family="Times" color="#000000"/>
+	<fontspec id="1" size="14" family="Times" color="#1154cc"/>
+<text top="110" left="108" width="210" height="18" font="0">Professor Abhishek JaiSingh</text>
+<text top="110" left="431" width="88" height="18" font="0">Ambar Chu </text>
+<text top="132" left="108" width="239" height="18" font="1"><a href="mailto:abhishekj3245t45w5@tgma.com">abhishekj3245t45w5@tgma.com</a></text>
+<text top="132" left="347" width="5" height="18" font="0"><a href="mailto:abhishekj3245t45w5@tgma.com"> </a></text>
+<text top="132" left="431" width="170" height="18" font="0">amabrchu@gmail.com </text>
+<text top="155" left="108" width="5" height="18" font="0"> </text>
+<text top="177" left="108" width="229" height="18" font="0">Abstract introduction keywords </text>
+<text top="199" left="108" width="5" height="18" font="0"> </text>
+<text top="222" left="108" width="635" height="18" font="0">Research Papers in Computer Science Egon Borger ¨ 1 Research Papers in Computer </text>
+<text top="244" left="108" width="660" height="18" font="0">Science 1. B¨orger E., A logical operational semantics for full Prolog. Part I: Selection core </text>
+<text top="267" left="108" width="641" height="18" font="0">and control. in: CSL’89. 3rd Workshop on Computer Science Logic (E.B¨orger, H.Kleine </text>
+<text top="289" left="108" width="642" height="18" font="0">B¨uning, M.M. Richter, Eds). Springer LNCS, vol. 440, 1990, pp. 36­64. = IBM Germany </text>
+<text top="312" left="108" width="653" height="18" font="0">IWBS Report 111, March 1990. Reprinted in: Proceedings of The 3rd Logic Programming </text>
+<text top="334" left="108" width="668" height="18" font="0">Winter School and Seminar. LOP’91, Ruprechtov, Czechoslovakia, pp.65­94. 2. B¨orger E., </text>
+<text top="357" left="108" width="622" height="18" font="0">A logical operational semantics for full Prolog. Part II: Built­in predicates for database </text>
+<text top="379" left="108" width="643" height="18" font="0">manipulations. in: MFCS’90. Mathematical Foundations of Computer Science (B.Rovan, </text>
+<text top="401" left="108" width="677" height="18" font="0">Ed.). Springer LNCS, vol. 452, 1990, pp 1­14. = IBM Germany IWBS Report 115, April 1990. </text>
+<text top="424" left="108" width="652" height="18" font="0">Reprinted in: E.B¨orger, K.D¨assler (eds.): PROLOG. DIN papers for discussion. ISO/IEC </text>
+<text top="446" left="108" width="624" height="18" font="0">JTC1 SC22 WG17 report no.58, National Physical Laboratory, Middlesex, April 1990, </text>
+<text top="469" left="108" width="635" height="18" font="0">pp.92­114. 3. B¨orger E., A logical operational semantics for full Prolog. Part III: Built­in </text>
+<text top="491" left="108" width="640" height="18" font="0">predicates for files, terms, arithmetic and input­output. in: Logic from Computer Science </text>
+<text top="514" left="108" width="642" height="18" font="0">(Y.Moschovakis, Ed.). Berkeley Mathematical Sciences Research Institute Publications, </text>
+<text top="536" left="108" width="673" height="18" font="0">vol.21, Springer 1992, pp. 17­50. Preliminary version: IBM Germany IWBS Report 115, April </text>
+<text top="559" left="108" width="669" height="18" font="0">1990. 4. B¨orger E., Rosenzweig D., From Prolog Algebras towards WAM—A Mathematical </text>
+<text top="581" left="108" width="651" height="18" font="0">Study of Implementation. in: Computer Science Logic (E.B¨orger, H.Kleine B¨uning, M.M. </text>
+<text top="603" left="108" width="621" height="18" font="0">Richter, W.Sch¨onfeld, Eds). Springer LNCS vol. 533, 1991, pp. 31­66. 5. B¨orger E., </text>
+<text top="626" left="108" width="646" height="18" font="0">Schmitt P., A formal operational semantics for languages of type Prolog III. in: Computer </text>
+<text top="648" left="108" width="644" height="18" font="0">Science Logic (E.B¨orger, H.Kleine B¨uning, M.M. Richter, W.Sch¨onfeld, Eds). Springer </text>
+<text top="671" left="108" width="606" height="18" font="0">LNCS 533, 1991, pp. 67­79. Preliminary version: IBM Germany, IWBS Report 144, </text>
+<text top="693" left="108" width="168" height="18" font="0">November 1990, pp.1­ </text>
+</page>
+</pdf2xml>

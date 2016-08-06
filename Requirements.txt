@@ -1,0 +1,23 @@
+For python3
+1. pypdf2
+2. pymysql
+3. nltk
+4. enchant (otherwise known as  pyenchant)
+5. BeautifulSoup
+6. urllib
+7. requests 
+8. pdftohtml
+9. nltk.download()
+
+
+Database Settings:
+Make a database on localhost named "authors_db".
+In "authors_db" create a table named "nameemail" having the following fields:
+
+email               varchar    length: 500 
+name               varchar    length: 500
+info                  varchar    length: 500
+website            varchar    length: 500
+
+user: root
+password: admin123

@@ -1,14 +1,13 @@
 For python3
 1. pypdf2
 2. pymysql
-3. nltk
+3. nltk (tokenizer)
 4. enchant (otherwise known as  pyenchant)
 5. BeautifulSoup
 6. urllib
 7. requests 
 8. pdftohtml
-9. nltk.download()
-
+9. shutil (python3 module)
 
 Database Settings:
 Make a database on localhost named "authors_db".

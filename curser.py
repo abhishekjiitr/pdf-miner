@@ -11,7 +11,6 @@ def fire(name="", email="", info="", site=''):
     global add_record, cursor, cnx
     data_record = (email, name, info, site)
     cursor.execute(add_record, data_record )
-    print('###############################')
     cnx.commit()
 
 folders = []
@@ -23,10 +22,6 @@ def recurse(folder):
         if i ==1:
             folders = subdirs
 
-            # for f in files:
-                # print(f)
-#print(os.getcwd())
-
 def recursion(path2, folder):
     for root, subdirs, files in os.walk(path2):
         for filename in  files:
@@ -35,19 +30,13 @@ def recursion(path2, folder):
                 text,emails = out1_pro.callMe(path)
                 if text != None:
                     w = EditDistance.textToMapping(text,emails)
-                    print("\n---from FINAL----")#, w#text,'\n\n ----  ',w
-                    # if len(Emails)!=0:
-                    #     print "$$$$$$",Emails
                     for item in w:
-                        print(item, w[item],filename[:-4], folder)
+                        # print(item, w[item],filename[:-4], folder)
                         try:
                             fire(w[item], item, filename[:-4], folder)
                         except Exception as e:
                             print("Exception in database updation " + str(e))
-                            pass
-                    # print os.path.abspath(os.path.join(path, os.pardir))
-                    # print os.pardir
-                    print("-----------------------xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+     
 
 
 def recurse2(path):

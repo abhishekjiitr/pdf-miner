@@ -28,7 +28,6 @@ def recurse(folder):
 
 
 def recursion(path2, folder):
-    print("Inside recursion")
     for root, subdirs, files in os.walk(path2):
         for filename in  files:
             # print("this is the name of file")
@@ -37,9 +36,6 @@ def recursion(path2, folder):
             if filename[-4:] == ".xml":
                 path = os.path.join(root, filename)
                 text,emails = out1_pro.callMe(path)
-                print(text)
-                print("This is the email.\n\n")
-                print(emails)
                 if text != None:
                     list_of_names = NameExtractor.textToNames(text)
                     w = EmailToNameMapping.emailToNameMapping(emails,list_of_names)

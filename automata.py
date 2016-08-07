@@ -26,7 +26,7 @@ def moving(src=PDF_DOWNLOAD_DIRECTORY,des=PDF_FILES_BACKUP_DIRECTORY):
         try:
             pass
             os.system("rm -r  " + src + "/*")
-            print(src)
+            # print(src)
         except OSError as e:
             print(str(e))
                

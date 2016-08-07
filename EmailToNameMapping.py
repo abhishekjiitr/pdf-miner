@@ -91,7 +91,7 @@ def emailToNameMapping(emailList,nameList):
 		#Filter the email for computing the editDistance by removing the digits
 		filteredEmail = emailList[j].split('@')[0]
 		filteredEmail = ''.join([str(i) for i in filteredEmail if not i.isdigit()])
-		print(filteredEmail)
+		# print(filteredEmail)
 
 		for n in range(len(nameList)):
 			if len(nameList[n].split())>1:  #if name consists of more than one component(eg Rahul Kashyap)

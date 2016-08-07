@@ -1,4 +1,4 @@
-http://localhost/
+http://localhost
 1 PDFs found, 1 links scanned, 4 links still left
 http://localhost/codes.html
 1 PDFs found, 2 links scanned, 4 links still left

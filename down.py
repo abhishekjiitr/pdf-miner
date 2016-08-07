@@ -19,8 +19,8 @@ def download_pdfs(list_of_pdfs,index):
 	directory=directory.replace('~','til')
 	if directory == '':
 		return
-	print(url)
-	print(directory)
+	# print(url)
+	# print(directory)
 
 	os.chdir(PDF_DOWNLOAD_DIRECTORY)
 	if not os.path.exists(os.path.join(os.getcwd(),directory)):

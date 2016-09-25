@@ -19,9 +19,9 @@ For python3
 Make a database on localhost named "authors_db".
 In "authors_db" create a table named "nameemail" having the following fields:
 
-email               varchar    length: 500 (make it unique to avoid duplication)
+email              varchar    length: 500 (make it unique to avoid duplication)
 name               varchar    length: 500
-info                  varchar    length: 500
+info               varchar    length: 500
 website            varchar    length: 500
 
 ```

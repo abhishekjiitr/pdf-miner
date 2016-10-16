@@ -28,7 +28,7 @@ website            varchar    length: 500
 user: root
 password: admin123
 ```
-Process:
+## Usage:
 
 Place domains list in finalDomain.txt
 Start automate.py

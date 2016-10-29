@@ -25,6 +25,7 @@ info               varchar    length: 500
 website            varchar    length: 500
 
 ```
+deault credentials
 user: root
 password: admin123
 ```
